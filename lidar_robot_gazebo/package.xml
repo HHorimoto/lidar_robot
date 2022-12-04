@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>lidar_robot_gazebo</name>
+  <version>0.0.0</version>
+  <description>The lidar_robot_gazebo package</description>
+
+  <maintainer email="todo@todo.todo">HHorimoto</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
