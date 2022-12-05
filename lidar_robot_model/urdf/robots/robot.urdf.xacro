@@ -4,6 +4,7 @@
   <xacro:include filename="$(find lidar_robot_model)/urdf/body/body.urdf.xacro"/>
   <xacro:include filename="$(find lidar_robot_model)/urdf/wheel/wheel.urdf.xacro"/>
   <xacro:include filename="$(find lidar_robot_model)/urdf/caster/caster.urdf.xacro"/>
+  <xacro:include filename="$(find lidar_robot_model)/urdf/lidar_base/lidar_base.urdf.xacro"/>
   <link name="base_footprint"/>
 
   <xacro:base parent="base_footprint">
@@ -23,6 +24,10 @@
   <xacro:caster parent="base_link">
     <origin xyz="-0.15 0 -0.05"/>
   </xacro:caster>
+
+  <xacro:lidar_base parent="base_link">
+    <origin xyz="0 0 0.1"/>
+  </xacro:lidar_base>
 
   <!-- ===========  Transmission ============ -->
   <xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface" />
