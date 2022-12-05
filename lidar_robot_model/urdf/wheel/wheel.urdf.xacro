@@ -15,6 +15,9 @@
         <geometry>
           <cylinder radius="0.1" length="0.05"/>
         </geometry>
+        <material name="olive">
+          <color rgba="128 128 0 1"/>
+        </material>
       </visual>
 
       <collision>
