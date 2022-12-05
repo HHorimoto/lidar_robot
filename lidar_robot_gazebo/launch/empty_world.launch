@@ -23,4 +23,7 @@
 
     <!-- ros_control motoman launch file -->
     <include file="$(find lidar_robot_control)/launch/robot_control.launch" />
+
+    <!-- run rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lidar_robot_gazebo)/config/simple.rviz" required="true" />
 </launch>
