@@ -1,8 +1,9 @@
 <launch>
     <!-- arguments -->
-    <arg name="model" default="$(find lidar_robot_model)/urdf/robots/robot.urdf.xacro"/>
+    <arg name="model" default="robot" />
+    <arg name="model_path" default="$(find lidar_robot_model)/urdf/robots/$(arg model).urdf.xacro" />
     <!-- prameters -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model_path)"/>
     <!-- nodes -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
