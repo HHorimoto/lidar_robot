@@ -5,6 +5,8 @@
     <arg name="model_path" default="$(find lidar_robot_model)/urdf/robots/$(arg model).urdf.xacro" />
     <arg name="world" default="small" />
     <arg name="world_path" default="$(find lidar_robot_gazebo)/worlds/$(arg world).world" />
+    <arg name="rviz" default="simple" />
+    <arg name="rviz_path" default="$(find lidar_robot_gazebo)/config/$(arg rviz).rviz" />
     <arg name="paused" default="false" />
     <arg name="use_sim_time" default="true" />
     <arg name="headless" default="false" />
@@ -29,5 +31,5 @@
     <include file="$(find lidar_robot_control)/launch/robot_control.launch" />
 
     <!-- run rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lidar_robot_gazebo)/config/simple.rviz" required="true" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_path)" required="true" />
 </launch>

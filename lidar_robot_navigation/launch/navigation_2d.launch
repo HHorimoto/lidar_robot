@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="initial_pose_x" default="0" />
+    <arg name="initial_pose_y" default="0" />
+    <arg name="initial_pose_a" default="0" />
+    <arg name="map" default="map" />
+    <arg name="map_path" default="$(find lidar_robot_navigation)/maps/$(arg map).yaml" />
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />
+
+    <include file="$(find lidar_robot_navigation)/launch/mcl/amcl.launch">
+        <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+        <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+        <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+    </include>
+
+    <include file="$(find lidar_robot_navigation)/launch/move_base/move_base.launch" />
+</launch>

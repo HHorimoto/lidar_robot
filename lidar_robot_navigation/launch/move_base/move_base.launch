@@ -1,0 +1,20 @@
+<launch>
+
+    <arg name="cmd_vel" default="/robot/diff_drive_controller/cmd_vel"/>
+    <arg name="odom" default="/robot/diff_drive_controller/odom"/>
+
+    <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen">
+        <param name="base_global_planner" value="navfn/NavfnROS"/>
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/move_base.yaml" command="load" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/costmap_common.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/costmap_common.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/costmap_local.yaml" command="load" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/costmap_global.yaml" command="load" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/planner_local.yaml" command="load" />
+        <rosparam file="$(find lidar_robot_navigation)/launch/move_base/config/planner_global.yaml" command="load" />
+
+        <remap from="cmd_vel" to="$(arg cmd_vel)"/>
+        <remap from="odom" to="$(arg odom)"/>
+    </node>
+
+</launch>

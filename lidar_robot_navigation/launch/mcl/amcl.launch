@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="initial_pose_x" default="0" />
+    <arg name="initial_pose_y" default="0" />
+    <arg name="initial_pose_a" default="0" />
+    <arg name="scan" default="/lidar_robot/scan" />
+    <node pkg="amcl" type="amcl" name="amcl">
+        <rosparam command="load" file="$(find lidar_robot_navigation)/launch/mcl/config/amcl.yaml"/>
+        <remap from="scan" to="$(arg scan)" />
+        <param name="initial_pose_x" value="$(arg initial_pose_x)" />
+        <param name="initial_pose_y" value="$(arg initial_pose_y)" />
+        <param name="initial_pose_a" value="$(arg initial_pose_a)" />
+    </node>
+</launch>
