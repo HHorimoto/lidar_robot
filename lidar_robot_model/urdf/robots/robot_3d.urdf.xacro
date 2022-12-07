@@ -6,6 +6,7 @@
     <xacro:include filename="$(find lidar_robot_model)/urdf/caster/caster.urdf.xacro"/>
     <xacro:include filename="$(find lidar_robot_model)/urdf/lidar_base/lidar_base.urdf.xacro"/>
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+    <xacro:include filename="$(find lidar_robot_model)/urdf/sensors/imu.urdf.xacro"/>
     <link name="base_footprint"/>
 
     <xacro:base parent="base_footprint">
@@ -30,9 +31,13 @@
         <origin xyz="0 0 0.10"/>
     </xacro:lidar_base>
 
-    <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" organize_cloud="false" hz="10" samples="440" gpu="false">
+    <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" organize_cloud="false" hz="10" samples="1875" gpu="false">
         <origin xyz="0 0 0.150" rpy="0 0 0" />
     </xacro:VLP-16>
+
+    <xacro:imu_sensor parent="base_link">
+        <origin xyz="-0.15 0 0.05" rpy="0 0 0" />
+    </xacro:imu_sensor>
 
     <!-- ===========  Transmission ============ -->
     <xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface" />
@@ -49,4 +54,5 @@
     <xacro:wheel_gazebo prefix="right" />
     <xacro:wheel_gazebo prefix="left" />
     <xacro:caster_gazebo/>
+    <xacro:imu_gazebo/>
 </robot>
